@@ -1,0 +1,69 @@
+{
+  "castopod": {
+    "CP_BASEURL": {
+      "value": "https://${{RAILWAY_PUBLIC_DOMAIN}}/",
+      "description": "REQUIRED — public URL of this service (trailing slash required); auto-filled from the service's public domain"
+    },
+    "CP_ANALYTICS_SALT": {
+      "value": "${{secret(64)}}",
+      "description": "REQUIRED — 64-char random string"
+    },
+    "RAILWAY_RUN_UID": {
+      "value": "0",
+      "description": "REQUIRED — run as root; see castopod/template-editor-raw.json"
+    },
+    "CP_DATABASE_HOSTNAME": {
+      "value": "${{mariadb.RAILWAY_PRIVATE_DOMAIN}}"
+    },
+    "CP_DATABASE_NAME": {
+      "value": "${{mariadb.MYSQL_DATABASE}}"
+    },
+    "CP_DATABASE_USERNAME": {
+      "value": "${{mariadb.MYSQL_USER}}"
+    },
+    "CP_DATABASE_PASSWORD": {
+      "value": "${{mariadb.MYSQL_PASSWORD}}"
+    },
+    "CP_MEDIA_BASEURL": {
+      "value": "",
+      "isOptional": true,
+      "description": "Optional — separate media domain, empty = use CP_BASEURL"
+    },
+    "CP_ENABLE_2FA": {
+      "value": "true",
+      "isOptional": true
+    },
+    "CP_EMAIL_FROM": {
+      "value": "",
+      "isOptional": true
+    },
+    "CP_EMAIL_SMTP_HOST": {
+      "value": "",
+      "isOptional": true
+    },
+    "CP_EMAIL_SMTP_USERNAME": {
+      "value": "",
+      "isOptional": true
+    },
+    "CP_EMAIL_SMTP_PASSWORD": {
+      "value": "",
+      "isOptional": true
+    }
+  },
+  "mariadb": {
+    "MYSQL_DATABASE": {
+      "value": "castopod"
+    },
+    "MYSQL_USER": {
+      "value": "castopod"
+    },
+    "MYSQL_PASSWORD": {
+      "value": "${{secret(16)}}",
+      "description": "App user password — auto-generated"
+    },
+    "MYSQL_ROOT_PASSWORD": {
+      "value": "${{secret(16)}}",
+      "description": "Root password — auto-generated; must differ from MYSQL_PASSWORD"
+    }
+  }
+}

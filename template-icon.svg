@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <rect width="256" height="256" rx="48" fill="#009486"/>
+  <!-- capsule / pod body -->
+  <rect x="48" y="72" width="160" height="112" rx="56" fill="#e7f9e4"/>
+  <!-- two porthole cutouts (negative space) -->
+  <circle cx="96" cy="128" r="26" fill="#009486"/>
+  <circle cx="160" cy="128" r="26" fill="#009486"/>
+  <!-- highlight -->
+  <circle cx="96" cy="128" r="12" fill="#ffffff"/>
+  <circle cx="160" cy="128" r="12" fill="#ffffff"/>
+</svg>

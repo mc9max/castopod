@@ -1,0 +1,8 @@
+{
+  "mariadb": {
+    "MYSQL_DATABASE": "castopod",
+    "MYSQL_USER": "castopod",
+    "MYSQL_PASSWORD": "${{secret(16)}}",
+    "MYSQL_ROOT_PASSWORD": "${{secret(16)}}"
+  }
+}

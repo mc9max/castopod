@@ -1,0 +1,60 @@
+{
+  "CP_BASEURL": {
+    "value": "https://${{RAILWAY_PUBLIC_DOMAIN}}/",
+    "description": "REQUIRED — the public URL of this service, ending with a trailing slash. Auto-filled from this service's public domain; override to use your own custom domain. The bootstrap fails without it."
+  },
+  "CP_ANALYTICS_SALT": {
+    "value": "${{secret(64)}}",
+    "description": "REQUIRED — a random 64-character string used for analytics hashing. This placeholder auto-generates one for you. Do not reuse an existing salt."
+  },
+  "RAILWAY_RUN_UID": {
+    "value": "0",
+    "description": "REQUIRED — run the container as root (uid 0). Castopod's s6-overlay services have no per-service user and inherit the container user. With the default image user (www-data, uid 33), the root-owned Railway volume at /app/public/media is not writable and the bootstrap fails. Setting 0 boots every fresh install cleanly. MariaDB does NOT need this."
+  },
+  "CP_DATABASE_HOSTNAME": {
+    "value": "${{mariadb.RAILWAY_PRIVATE_DOMAIN}}",
+    "description": "Automatically wired from the MariaDB companion service (private domain). If you see a literal service name here, check the companion mapping."
+  },
+  "CP_DATABASE_NAME": {
+    "value": "${{mariadb.MYSQL_DATABASE}}",
+    "description": "Automatically wired from the MariaDB companion service."
+  },
+  "CP_DATABASE_USERNAME": {
+    "value": "${{mariadb.MYSQL_USER}}",
+    "description": "Automatically wired from the MariaDB companion service."
+  },
+  "CP_DATABASE_PASSWORD": {
+    "value": "${{mariadb.MYSQL_PASSWORD}}",
+    "description": "Automatically wired from the MariaDB companion service."
+  },
+  "CP_MEDIA_BASEURL": {
+    "value": "",
+    "description": "Optional — a separate public domain for media delivery (e.g. an S3-backed domain or CDN). Leave empty to use CP_BASEURL (default — media served from the same domain as the app).",
+    "isOptional": true
+  },
+  "CP_ENABLE_2FA": {
+    "value": "true",
+    "description": "Enable TOTP two-factor authentication for logins. Leave true (recommended).",
+    "isOptional": true
+  },
+  "CP_EMAIL_FROM": {
+    "value": "",
+    "description": "Optional — the From address for outgoing mail (e.g. noreply@your-podcast-domain.com).",
+    "isOptional": true
+  },
+  "CP_EMAIL_SMTP_HOST": {
+    "value": "",
+    "description": "Optional — SMTP host for outgoing mail. Leave empty if you don't need email (login, forgot-password).",
+    "isOptional": true
+  },
+  "CP_EMAIL_SMTP_USERNAME": {
+    "value": "",
+    "description": "Optional — SMTP username.",
+    "isOptional": true
+  },
+  "CP_EMAIL_SMTP_PASSWORD": {
+    "value": "",
+    "description": "Optional — SMTP password.",
+    "isOptional": true
+  }
+}

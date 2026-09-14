@@ -1,0 +1,67 @@
+{
+  "CP_BASEURL": {
+    "type": "string",
+    "description": "REQUIRED — the public URL of the Castopod service, ending with a trailing slash. Use Railway's public domain.",
+    "defaultValue": "https://${{RAILWAY_PUBLIC_DOMAIN}}/"
+  },
+  "CP_ANALYTICS_SALT": {
+    "type": "string",
+    "description": "REQUIRED — a 64-character random string used for analytics hashing. Auto-generated.",
+    "defaultValue": "${{secret(64)}}"
+  },
+  "RAILWAY_RUN_UID": {
+    "type": "string",
+    "description": "User ID to run as. Must be 0 (root) because the Railway volume at /app/public/media mounts root-owned. The image's s6 services inherit the container user, and the default image user (www-data uid 33) cannot write to a root-owned volume → bootstrap fails.",
+    "defaultValue": "0"
+  },
+  "CP_DATABASE_HOSTNAME": {
+    "type": "string",
+    "description": "Database host (wired from the MariaDB companion service)",
+    "defaultValue": "${{mariadb.RAILWAY_PRIVATE_DOMAIN}}"
+  },
+  "CP_DATABASE_NAME": {
+    "type": "string",
+    "description": "Database name (wired from the MariaDB companion service)",
+    "defaultValue": "${{mariadb.MYSQL_DATABASE}}"
+  },
+  "CP_DATABASE_USERNAME": {
+    "type": "string",
+    "description": "Database user (wired from the MariaDB companion service)",
+    "defaultValue": "${{mariadb.MYSQL_USER}}"
+  },
+  "CP_DATABASE_PASSWORD": {
+    "type": "string",
+    "description": "Database password (wired from the MariaDB companion service)",
+    "defaultValue": "${{mariadb.MYSQL_PASSWORD}}"
+  },
+  "CP_MEDIA_BASEURL": {
+    "type": "string",
+    "description": "Optional — separate public domain for media delivery. Leave empty to use CP_BASEURL.",
+    "defaultValue": ""
+  },
+  "CP_ENABLE_2FA": {
+    "type": "string",
+    "description": "Enable TOTP two-factor authentication",
+    "defaultValue": "true"
+  },
+  "CP_EMAIL_FROM": {
+    "type": "string",
+    "description": "Optional — From address for outgoing mail",
+    "defaultValue": ""
+  },
+  "CP_EMAIL_SMTP_HOST": {
+    "type": "string",
+    "description": "Optional — SMTP host",
+    "defaultValue": ""
+  },
+  "CP_EMAIL_SMTP_USERNAME": {
+    "type": "string",
+    "description": "Optional — SMTP username",
+    "defaultValue": ""
+  },
+  "CP_EMAIL_SMTP_PASSWORD": {
+    "type": "string",
+    "description": "Optional — SMTP password",
+    "defaultValue": ""
+  }
+}
