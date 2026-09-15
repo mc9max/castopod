@@ -33,9 +33,9 @@ The deploy form pre-fills all companion variables (DB host / name / user / passw
 
 **After the first successful deploy:**
 
-1. Open the service's public URL — you'll be redirected to `/cp-setup` (or `/cp-install` on some builds)
-2. Complete the setup wizard — set your instance name, admin email, and admin password
-3. You are now the first (and by default the only) admin user
+1. Open `https://<your-domain>/cp-install` — the setup wizard ("Create your Super Admin")
+2. Set your admin email and password — you become the first (and by default the only) admin user
+3. The same site is now both your admin dashboard and your public player — there is no separate admin panel
 
 No OAuth app, no external service, no key-pair registration — the app ships with what it needs.
 
@@ -68,7 +68,7 @@ This is a two-service template:
 ## About Hosting
 
 - **Castopod service** — web front-end on port 8080, health at `/health`. The s6 `bootstrap` one-shot runs `php spark castopod:database-update` (migrations) and `php spark cache:clear` before `frankenphp` starts. `/app/public/media` must be writable by the pod — running as root (uid 0) with the root-owned volume is the pattern that works on Railway.
-- **MariaDB service** — `:3306`, `CASTOPOD_USER`/`CASTOPOD_PASSWORD` credentials are injected by the template. The `mariadb` image's own entrypoint handles volume-owning (no wrapper needed).
+- **MariaDB service** — `:3306`, `CP_DATABASE_USERNAME`/`CP_DATABASE_PASSWORD` credentials are injected by the template (wired to the MariaDB service's `MYSQL_USER`/`MYSQL_PASSWORD`). The `mariadb` image's own entrypoint handles volume-owning (no wrapper needed).
 
 **Volume sizing:** For a personal show, a 20 GB Railway volume is plenty. For a multi-year archive, size to your expected audio size (roughly 45 MB/min for a 64 kbps stereo mp3, so a 1-hour episode is about 90 MB).
 
@@ -96,9 +96,25 @@ All variables shown in the deploy form are pre-wired; the only two you may want 
 
 1. Deploy via the button above.
 2. Wait ~90 seconds for both services to reach `Running`.
-3. Open the Castopod public URL → redirected to the setup wizard.
-4. Complete setup (instance name, admin email, admin password).
-5. Create your first podcast, upload your first episode, done.
+3. Open `https://<your-domain>/cp-install` and create your Super Admin (email + password).
+4. Create your first podcast, upload your first episode, done.
+
+## How to Add Podcasts
+
+The deployed site is the entire product — one URL serves three things:
+
+- **Public player** — `https://<your-domain>/` lists all podcasts with a built-in web player
+- **Admin dashboard** — same site, sign in with your Super Admin credentials
+- **RSS feeds** — each podcast exposes an RSS feed you can subscribe to in any podcast app (Apple Podcasts, Overcast, Pocket Casts, etc.)
+
+**Adding content:**
+
+1. Sign in on the public site → **Add a Podcast**: name, author, description, cover art, slug
+2. Open that podcast → **Add Episode**: upload the audio file (MP3 recommended), set title/description/date → publish
+3. Audio files are stored on the `/app/public/media` volume, so they survive redeploys
+4. Copy the podcast's RSS feed URL from its settings and subscribe it in your favorite podcast client
+
+Tip: use a strong password for the Super Admin account — it is the only credential for this instance and there is no recovery UI once set.
 
 ## License
 
