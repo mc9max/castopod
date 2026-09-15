@@ -54,7 +54,7 @@ const castopod = service("castopod", {
     CP_DATABASE_NAME: preserve(),
     CP_DATABASE_USERNAME: preserve(),
     CP_DATABASE_PASSWORD: preserve(),
-    CP_ENABLE_2FA: "true",
+    CP_ENABLE_2FA: "false",
   },
 });
 

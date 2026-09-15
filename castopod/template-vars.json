@@ -42,7 +42,7 @@
   "CP_ENABLE_2FA": {
     "type": "string",
     "description": "Enable TOTP two-factor authentication",
-    "defaultValue": "true"
+    "defaultValue": "false"
   },
   "CP_EMAIL_FROM": {
     "type": "string",

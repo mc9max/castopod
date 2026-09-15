@@ -86,7 +86,7 @@ All variables shown in the deploy form are pre-wired; the only two you may want 
 | `CP_DATABASE_USERNAME` | No | Default: `${{mariadb.MYSQL_USER}}` |
 | `CP_DATABASE_PASSWORD` | No | Default: `${{mariadb.MYSQL_PASSWORD}}` |
 | `CP_MEDIA_BASEURL` | No | Separate domain for media (e.g. S3 or CDN). Leave empty to use `CP_BASEURL`. |
-| `CP_ENABLE_2FA` | No | `true`/`false`. Default `true`. |
+| `CP_ENABLE_2FA` | No | `true`/`false`. Default `false`. Set `true` to require TOTP 2FA at login. |
 | `CP_EMAIL_FROM` | No | SMTP From address. |
 | `CP_EMAIL_SMTP_HOST` | No | SMTP host. |
 | `CP_EMAIL_SMTP_USERNAME` | No | SMTP user. |

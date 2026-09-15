@@ -33,8 +33,8 @@
     "isOptional": true
   },
   "CP_ENABLE_2FA": {
-    "value": "true",
-    "description": "Enable TOTP two-factor authentication for logins. Leave true (recommended).",
+    "value": "false",
+    "description": "Enable TOTP two-factor authentication for logins. Leave false to skip 2FA.",
     "isOptional": true
   },
   "CP_EMAIL_FROM": {

@@ -30,7 +30,7 @@
       "description": "Optional — separate media domain, empty = use CP_BASEURL"
     },
     "CP_ENABLE_2FA": {
-      "value": "true",
+      "value": "false",
       "isOptional": true
     },
     "CP_EMAIL_FROM": {
