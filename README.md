@@ -8,7 +8,7 @@ Two services: Castopod (web app) + MariaDB (database).
 
 Host your own Castopod on Railway. This template provisions the all-in-one Castopod container (FrankenPHP + Caddy + s6-overlay under the hood) and a MariaDB companion for persistence. Podcast audio/artwork and app state persist in a Railway volume at `/app/public/media`.
 
-[![Deploy to Railway](https://railway.app/button.svg)](https://railway.com/deploy/nm7347)
+[![Deploy to Railway](https://railway.app/button.svg)](https://railway.com/deploy/castopod-1)
 
 ## Why Deploy
 
@@ -17,7 +17,7 @@ Castopod is the open-source backend that powers the Castopod service used by pod
 - **Full data ownership** — audio, artwork, and DB live on your Railway volume.
 - **ActivityPub fediverse support** — engage with the fediverse from your own instance.
 - **REST API** — publish episodes programmatically (see the Castopod plugin ecosystem).
-- **Two-factor auth** — TOTP built in (enabled by default).
+- **Two-factor auth** — optional TOTP (toggle per instance).
 - **No ad stack** — plain self-hosted software, your analytics.
 
 ## Common Use Cases
