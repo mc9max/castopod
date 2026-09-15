@@ -8,7 +8,7 @@ Two services: Castopod (web app) + MariaDB (database).
 
 Host your own Castopod on Railway. This template provisions the all-in-one Castopod container (FrankenPHP + Caddy + s6-overlay under the hood) and a MariaDB companion for persistence. Podcast audio/artwork and app state persist in a Railway volume at `/app/public/media`.
 
-[![Deploy to Railway](https://railway.app/button.svg)](https://railway.com/deploy/nAUhyE)
+[![Deploy to Railway](https://railway.app/button.svg)](https://railway.com/deploy/nm7347)
 
 ## Why Deploy
 
