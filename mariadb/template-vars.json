@@ -1,0 +1,22 @@
+{
+  "MYSQL_DATABASE": {
+    "type": "string",
+    "defaultValue": "castopod",
+    "description": "Name of the MySQL/MariaDB database to create for Castopod."
+  },
+  "MYSQL_USER": {
+    "type": "string",
+    "defaultValue": "castopod",
+    "description": "Application database user (distinct from root)."
+  },
+  "MYSQL_PASSWORD": {
+    "type": "string",
+    "defaultValue": "${{secret(16)}}",
+    "description": "Password for the application DB user. Auto-generated; the Castopod service references this value so both stay in sync."
+  },
+  "MYSQL_ROOT_PASSWORD": {
+    "type": "string",
+    "defaultValue": "${{secret(16)}}",
+    "description": "MySQL root password. Auto-generated; separate from the app user password."
+  }
+}

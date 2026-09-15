@@ -1,0 +1,18 @@
+{
+  "MYSQL_DATABASE": {
+    "value": "castopod",
+    "description": "Database name for Castopod"
+  },
+  "MYSQL_USER": {
+    "value": "castopod",
+    "description": "Application DB user"
+  },
+  "MYSQL_PASSWORD": {
+    "value": "${{secret(16)}}",
+    "description": "App DB user password — auto-generated. Castopod's CP_DATABASE_PASSWORD references this."
+  },
+  "MYSQL_ROOT_PASSWORD": {
+    "value": "${{secret(16)}}",
+    "description": "MySQL root password — auto-generated, separate from the app password."
+  }
+}
