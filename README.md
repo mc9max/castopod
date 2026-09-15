@@ -109,10 +109,10 @@ The deployed site is the entire product — one URL serves three things:
 
 **Adding content:**
 
-1. Sign in on the public site → **Add a Podcast**: name, author, description, cover art, slug
+1. Sign in on the public site → **Add a Podcast**: name, author, description, cover art, slug (this slug becomes the `@{podcastHandle}` in all URLs)
 2. Open that podcast → **Add Episode**: upload the audio file (MP3 recommended), set title/description/date → publish
 3. Audio files are stored on the `/app/public/media` volume, so they survive redeploys
-4. Copy the podcast's RSS feed URL from its settings and subscribe it in your favorite podcast client
+4. Each podcast's RSS feed is at `https://<your-domain>/@{podcastHandle>/feed.xml` — copy this URL into any podcast app (Apple Podcasts, Overcast, Pocket Casts, etc.) to subscribe
 
 Tip: use a strong password for the Super Admin account — it is the only credential for this instance and there is no recovery UI once set.
 
